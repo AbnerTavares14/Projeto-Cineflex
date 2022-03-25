@@ -1,0 +1,126 @@
+.assentos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+}
+
+.disponivel{
+    width: 26px;
+    height: 26px;
+    border-radius: 12px;
+    background-color: #C3CFD9;
+    border: 1px solid #808F9D;
+    margin-bottom: 19px;
+    margin-right: 7px;
+}
+
+.disponivel p{
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 11px;
+}
+
+.indisponivel{
+    width: 26px;
+    height: 26px;
+    border-radius: 12px;
+    background-color: #FBE192;
+    border: 1px solid #F7C52B;
+    margin-bottom: 19px;
+    margin-right: 7px;
+}
+
+.indisponivel p{
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 11px;
+}
+
+.selecionado{
+    width: 26px;
+    height: 26px;
+    border-radius: 12px;
+    background-color: #8DD7CF;
+    border: 1px solid #45BDB0;
+    margin-bottom: 19px;
+    margin-right: 7px;
+}
+
+.selecionado p{
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 11px;
+}
+
+.legenda{
+    display: flex;
+    justify-content: space-around;
+}
+
+.legenda-selecionado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cor-selecionado{
+    width: 25px;
+    height: 25px;
+    background-color: #8DD7CF;
+    border: 1px solid #1AAE9E;
+    border-radius: 17px;
+}
+
+.legenda-disponivel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cor-disponivel{
+    width: 25px;
+    height: 25px;
+    background-color: #C3CFD9;
+    border: 1px solid #7B8B99;
+    border-radius: 17px;
+}
+
+.legenda-indisponivel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cor-indisponivel{
+    width: 25px;
+    height: 25px;
+    background-color: #FBE192;
+    border: 1px solid #F7C52B;
+    border-radius: 17px;
+}
+
+.dados{
+    margin-top: 42px;
+    padding: 15px;
+}
+
+.dados h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #293845;
+    align-items: center;
+    font-weight: 400;
+}
+
+.dados input{
+    width: 327px;
+    height: 51px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    border: 1px solid #D4D4D4;
+}

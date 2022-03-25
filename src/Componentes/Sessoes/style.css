@@ -1,0 +1,27 @@
+.sessao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.dias-horarios p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #293845;
+    margin-left: 6px;
+}
+
+.sessao-horario button{
+    outline: none;
+    border: 0 none;
+    background-color: #E8833A;
+    width: 83px;
+    height: 43px;
+    margin-left: 6px;
+    margin-top: 22px;
+}
+
+.sessao-horario p{
+    color: #FFFFFF;
+}
