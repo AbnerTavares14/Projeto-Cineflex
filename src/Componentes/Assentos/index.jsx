@@ -1,22 +1,47 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./style.css"
 import BotaoAssentos from "../BotaoAssentos";
 
 export default function Assentos() {
     const { idSessao } = useParams();
     const [assentos, setAssentos] = useState([]);
-    // const [selecionado, setSelecionado] = useState("disponivel");
+    let [nome, setNome] = useState("");
+    let [cpf, setCPF] = useState("");
+    const [selecionados, setSelecionados] = useState([]);
+    const [sessao, setSessao] = useState([]);
+    const [filme, setFilme] = useState([]);
+    const [hora,setHora] = useState("");
+    // let ids = [];
+    const array = [];
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
         promise.then((resposta) => {
             setAssentos(resposta.data.seats);
+            setSessao(resposta.data.day);
+            setFilme(resposta.data.movie);
+            setHora(resposta.data.name);
             console.log(resposta.data);
         })
     }, [idSessao]);
 
-    console.log(assentos);
+    function selecionaAssento(id){
+        array.push(id);
+        setSelecionados([...selecionados,id]);
+    }
+
+    function desselecionaAssento(id){
+        array.pop(id);
+        setSelecionados([...array]);
+    }
+
+    let navigate = useNavigate();
+    const handleRedirect = () => {
+        navigate("/sucesso", {
+            state: {ids:selecionados, name:nome, cpf:cpf, hora:hora, data:sessao.date, filme:filme.title}
+        });
+    }
 
     return (
         <>
@@ -24,7 +49,7 @@ export default function Assentos() {
             <div className="assentos">
                 {assentos.map(assento => {
                     return(
-                        <BotaoAssentos isAvailable={assento.isAvailable} numero={assento.name} id={assento.id} />
+                        <BotaoAssentos key={assento.name}  desselecionados={(id) => desselecionaAssento(id)} selecionados={(id) => selecionaAssento(id)} isAvailable={assento.isAvailable} numero={assento.name} />
                     )
                 })
                 }
@@ -46,16 +71,24 @@ export default function Assentos() {
 
             <section className="dados">
                 <h2>Nome do comprador:</h2>
-                <input type="textarea" placeholder="Digite seu nome..." />
+                <input type="text" value={nome} onChange={ (e) => {
+                    setNome(e.target.value)
+                }
+                    } placeholder="Digite seu nome..." />
                 <h2>CPF do comprador:</h2>
-                <input type="textarea" placeholder="Digite seu CPF..." />
+                <input type="text" value={cpf} onChange={(e) => setCPF(e.target.value)} placeholder="Digite seu CPF..." />
             </section>
 
 
             <footer>
-                <Link to={`/sucesso`}>
-                    <button><p>Reservar assento(s)</p></button>
-                </Link>
+                    <button onClick={() => {
+                            const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {ids:selecionados, name:nome, cpf:cpf} );
+                            promise.then((resposta) => {
+                                console.log(resposta);
+                                handleRedirect();
+                            })
+                        }
+                    }><p>Reservar assento(s)</p></button>
             </footer>
         </>
     )

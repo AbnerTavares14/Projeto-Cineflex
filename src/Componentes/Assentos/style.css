@@ -1,5 +1,5 @@
 .assentos{
-    width: 100%;
+    width: 375px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -58,6 +58,7 @@
 }
 
 .legenda{
+    width: 375px;
     display: flex;
     justify-content: space-around;
 }
@@ -123,4 +124,27 @@
     border-radius: 3px;
     background-color: #FFFFFF;
     border: 1px solid #D4D4D4;
+}
+
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+footer button{
+    width: 225px;
+    height: 42px;
+    background-color: #E8833A;
+    border-radius: 3px;
+    border: 0 none;
+    outline: none;
+}
+
+footer button p{
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: 18px;
 }
