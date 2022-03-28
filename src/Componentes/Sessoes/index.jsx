@@ -5,11 +5,12 @@ import "./style.css"
 
 export default function Sessoes(){
     const [sessoes, setSessoes] = useState([]);
+    const [filme,setFilme] = useState([]);
     const {idFilme} = useParams();
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
         promise.then((resposta) => {
-            console.log(resposta.data);
+            setFilme(resposta.data);
             setSessoes(resposta.data.days);
         });
     }, [idFilme]);
@@ -37,6 +38,12 @@ export default function Sessoes(){
                         </div>
                     </div>
                 )}
+            </div>
+            <div className="rodape">
+                <div className="poster">
+                    <img src={filme.posterURL} alt="" />
+                </div>
+                <p>{filme.title}</p>
             </div>
         </>
     )

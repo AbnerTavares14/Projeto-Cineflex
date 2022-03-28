@@ -12,7 +12,7 @@ export default function Assentos() {
     const [selecionados, setSelecionados] = useState([]);
     const [sessao, setSessao] = useState([]);
     const [filme, setFilme] = useState([]);
-    const [hora,setHora] = useState("");
+    const [hora, setHora] = useState("");
     // let ids = [];
     const array = [];
     useEffect(() => {
@@ -26,12 +26,12 @@ export default function Assentos() {
         })
     }, [idSessao]);
 
-    function selecionaAssento(id){
+    function selecionaAssento(id) {
         array.push(id);
-        setSelecionados([...selecionados,id]);
+        setSelecionados([...selecionados, id]);
     }
 
-    function desselecionaAssento(id){
+    function desselecionaAssento(id) {
         array.pop(id);
         setSelecionados([...array]);
     }
@@ -39,7 +39,7 @@ export default function Assentos() {
     let navigate = useNavigate();
     const handleRedirect = () => {
         navigate("/sucesso", {
-            state: {ids:selecionados, nome:nome, cpf:cpf, hora:hora, data:sessao.date, filme:filme.title}
+            state: { ids: selecionados, nome: nome, cpf: cpf, hora: hora, data: sessao.date, filme: filme.title }
         });
     }
 
@@ -48,8 +48,8 @@ export default function Assentos() {
             <div className="texto"><h1>Selecione o(s) assento(s)</h1></div>
             <div className="assentos">
                 {assentos.map(assento => {
-                    return(
-                        <BotaoAssentos key={assento.name}  desselecionados={(id) => desselecionaAssento(id)} selecionados={(id) => selecionaAssento(id)} isAvailable={assento.isAvailable} numero={assento.name} />
+                    return (
+                        <BotaoAssentos key={assento.name} desselecionados={(id) => desselecionaAssento(id)} selecionados={(id) => selecionaAssento(id)} isAvailable={assento.isAvailable} numero={assento.name} />
                     )
                 })
                 }
@@ -71,25 +71,39 @@ export default function Assentos() {
 
             <section className="dados">
                 <h2>Nome do comprador:</h2>
-                <input type="text" value={nome} onChange={ (e) => {
+                <input type="text" value={nome} onChange={(e) => {
                     setNome(e.target.value)
                 }
-                    } placeholder="Digite seu nome..." />
+                } placeholder="Digite seu nome..." />
                 <h2>CPF do comprador:</h2>
                 <input type="text" value={cpf} onChange={(e) => setCPF(e.target.value)} placeholder="Digite seu CPF..." />
             </section>
 
 
             <footer>
-                    <button onClick={() => {
-                            const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {ids:selecionados, name:nome, cpf:cpf} );
-                            promise.then((resposta) => {
-                                console.log(resposta);
-                                handleRedirect();
-                            })
-                        }
-                    }><p>Reservar assento(s)</p></button>
+                <button onClick={() => {
+                    const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", { ids: selecionados, name: nome, cpf: cpf });
+                    promise.then((resposta) => {
+                        console.log(resposta);
+
+                        handleRedirect();
+                    })
+                    promise.catch((err) => {
+                        console.log(err);
+                    })
+                }
+                }><p>Reservar assento(s)</p></button>
             </footer>
+
+            <div className="rodape-assentos">
+                <div className="poster-filme">
+                    <img src={filme.posterURL} alt="" />
+                </div>
+                <div className="texto-filme">
+                    <p>{filme.title}</p>
+                    <p>{sessao.weekday} - {hora}</p>
+                </div>
+            </div>
         </>
     )
 }

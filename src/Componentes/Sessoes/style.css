@@ -1,8 +1,14 @@
+
+.horarios{
+    margin-bottom: 20px;
+}
+
 .sessao{
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 10px;
+    margin-bottom: ;
 }
 
 .dias-horarios p{
@@ -24,4 +30,37 @@
 
 .sessao-horario p{
     color: #FFFFFF;
+}
+
+.rodape{
+    display: flex;
+    align-items: center;
+    /* position: fixed;
+    bottom: 0; */
+    background-color: #DFE6ED;
+    border: 1px solid #9EADBA;
+    width: 375px;
+    height: 117px;
+}
+
+.rodape .poster{
+    width: 64px;
+    height: 89px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.rodape .poster img{
+    width: 48px;
+    height: 72px;
+}
+
+.rodape p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #293845;
 }

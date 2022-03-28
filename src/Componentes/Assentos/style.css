@@ -148,3 +148,37 @@ footer button p{
     color: #FFFFFF;
     font-size: 18px;
 }
+
+.rodape-assentos{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    /* position: fixed;
+    bottom: 0; */
+    background-color: #DFE6ED;
+    border: 1px solid #9EADBA;
+    width: 375px;
+    height: 117px;
+}
+
+.rodape-assentos .poster-filme{
+    width: 64px;
+    height: 89px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.rodape-assentos .poster-filme img{
+    width: 48px;
+    height: 72px;
+}
+
+.rodape-assentos .texto-filme p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #293845;
+}
