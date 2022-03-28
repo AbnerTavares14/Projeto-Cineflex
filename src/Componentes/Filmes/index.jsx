@@ -16,7 +16,7 @@ export default function Filmes() {
     return (
         <>
             <div className="texto">
-                <h1>Selecionar o filme</h1>
+                <h1>Selecione o filme</h1>
             </div>
             <main>
                 <div className="filmes">
