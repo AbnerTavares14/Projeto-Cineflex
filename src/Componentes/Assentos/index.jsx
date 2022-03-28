@@ -39,7 +39,7 @@ export default function Assentos() {
     let navigate = useNavigate();
     const handleRedirect = () => {
         navigate("/sucesso", {
-            state: {ids:selecionados, name:nome, cpf:cpf, hora:hora, data:sessao.date, filme:filme.title}
+            state: {ids:selecionados, nome:nome, cpf:cpf, hora:hora, data:sessao.date, filme:filme.title}
         });
     }
 
