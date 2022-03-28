@@ -116,6 +116,8 @@
     color: #293845;
     align-items: center;
     font-weight: 400;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .dados input{
