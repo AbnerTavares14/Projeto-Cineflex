@@ -7,23 +7,23 @@ export default function BotaoAssentos(props) {
     if (isAvailable === true) {
         if (selecionado === "selecionado") {
             return (
-                <button key={id} className={selecionado} onClick={() => { 
+                <button key={numero} className={selecionado} onClick={() => { 
                     setSelecionado("disponivel");
-                    desselecionados(numero);
+                    desselecionados(id, numero);
                 }} > <p>{numero}</p></button>
             )
         } else {
             
             return (
-                <button onClick={() => {
-                    selecionados(numero);
+                <button key={numero} onClick={() => {
+                    selecionados(id, numero);
                     setSelecionado("selecionado")
             }}  className={selecionado}><p>{numero}</p></button>
             )
         }
     } else {
         return (
-            <button onClick={() => alert("Este assento não está disponível!")}  key={id} className="indisponivel"><p>{numero}</p></button>
+            <button onClick={() => alert("Este assento não está disponível!")}  key={numero} className="indisponivel"><p>{numero}</p></button>
         )
     }
 }

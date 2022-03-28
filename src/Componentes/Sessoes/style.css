@@ -44,6 +44,9 @@
 }
 
 .rodape .poster{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 64px;
     height: 89px;
     background: #FFFFFF;
@@ -63,4 +66,12 @@
     font-size: 26px;
     font-weight: 400;
     color: #293845;
+}
+
+ion-icon{
+    font-size: 22px;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    color: #9EADBA;
 }

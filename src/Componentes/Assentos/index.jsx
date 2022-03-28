@@ -13,8 +13,7 @@ export default function Assentos() {
     const [sessao, setSessao] = useState([]);
     const [filme, setFilme] = useState([]);
     const [hora, setHora] = useState("");
-    // let ids = [];
-    const array = [];
+    const [array, setArray] = useState([]);
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
         promise.then((resposta) => {
@@ -26,20 +25,22 @@ export default function Assentos() {
         })
     }, [idSessao]);
 
-    function selecionaAssento(id) {
-        array.push(id);
+    function selecionaAssento(id, numero) {
+        setArray([...array, numero]);
         setSelecionados([...selecionados, id]);
     }
 
-    function desselecionaAssento(id) {
-        array.pop(id);
-        setSelecionados([...array]);
+    function desselecionaAssento(id, numero) {
+        const newArray = array.filter( arr => arr !== numero);
+        const newSelecionados = selecionados.filter( selecionado => selecionado !== id);
+        setArray([...newArray]);
+        setSelecionados([...newSelecionados]);
     }
 
     let navigate = useNavigate();
     const handleRedirect = () => {
         navigate("/sucesso", {
-            state: { ids: selecionados, nome: nome, cpf: cpf, hora: hora, data: sessao.date, filme: filme.title }
+            state: { ids: array, nome: nome, cpf: cpf, hora: hora, data: sessao.date, filme: filme.title }
         });
     }
 
@@ -49,7 +50,7 @@ export default function Assentos() {
             <div className="assentos">
                 {assentos.map(assento => {
                     return (
-                        <BotaoAssentos key={assento.name} desselecionados={(id) => desselecionaAssento(id)} selecionados={(id) => selecionaAssento(id)} isAvailable={assento.isAvailable} numero={assento.name} />
+                        <BotaoAssentos key={assento.name} desselecionados={(id, numero) => desselecionaAssento(id, numero)} selecionados={(id, numero) => selecionaAssento(id, numero)} isAvailable={assento.isAvailable} id={assento.id} numero={assento.name} />
                     )
                 })
                 }

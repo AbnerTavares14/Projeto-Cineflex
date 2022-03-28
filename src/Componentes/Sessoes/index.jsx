@@ -31,8 +31,8 @@ export default function Sessoes(){
                         </div>
                         <div className="sessao-horario">
                         {sessao.showtimes.map(horario => 
-                            <Link to={`/assentos/${horario.id}`}>
-                                <button key={horario.id}><p>{horario.name}</p></button>
+                            <Link key={horario.id+horario.name} to={`/assentos/${horario.id}`}>
+                                <button><p>{horario.name}</p></button>
                             </Link>
                         )}
                         </div>

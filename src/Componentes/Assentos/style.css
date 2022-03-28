@@ -164,6 +164,9 @@ footer button p{
 }
 
 .rodape-assentos .poster-filme{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 64px;
     height: 89px;
     background: #FFFFFF;
